@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeFinder", "PrimeFinder\PrimeFinder.csproj", "{C924AE35-0F39-475C-AB53-C36305106947}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeMaths", "PrimeMaths\PrimeMaths.csproj", "{E1253370-7531-4870-B7F8-6544E3FB21E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C924AE35-0F39-475C-AB53-C36305106947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C924AE35-0F39-475C-AB53-C36305106947}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C924AE35-0F39-475C-AB53-C36305106947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1253370-7531-4870-B7F8-6544E3FB21E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1253370-7531-4870-B7F8-6544E3FB21E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1253370-7531-4870-B7F8-6544E3FB21E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1253370-7531-4870-B7F8-6544E3FB21E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

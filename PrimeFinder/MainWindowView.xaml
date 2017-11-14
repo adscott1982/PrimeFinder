@@ -1,0 +1,45 @@
+﻿<Window x:Class="PrimeFinder.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrimeFinder"
+        mc:Ignorable="d"
+        Title="Prime Finder" Height="350" Width="525">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Margin="5" Padding="3" Grid.Row="0" Grid.Column="0" 
+                   Text="Enter the nth prime to find:" />
+        <TextBox Margin="5" Padding="3" Grid.Row="0" Grid.Column="1" 
+                 Text="{Binding NthPrimeToFind, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 MouseDoubleClick="SelectAllText" GotMouseCapture="SelectAllText" GotKeyboardFocus="SelectAllText">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsProcessing}" Value="True" >
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Button Margin="5" Padding="3" Grid.Row="0" Grid.Column="2"
+                Content="Find Prime" Command="{Binding CalculateNthPrimeCommand}"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Padding="3" Text="Result:"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5" Padding="3" Text="{Binding NthPrimeResult, StringFormat='#,#.'}"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Margin="5" Padding="3" Text="{Binding ExecutionTime, StringFormat={}{0:m\\m' 's\\.fff\\s}}"/>
+    </Grid>
+</Window>
