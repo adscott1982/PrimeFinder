@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrimeFinder"
         mc:Ignorable="d"
-        Title="Prime Finder" Height="350" Width="525">
+        Title="Prime Finder" Height="184.96" Width="480">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -35,8 +35,24 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <Button Margin="5" Padding="3" Grid.Row="0" Grid.Column="2"
+        <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
+            <Button Margin="5" Padding="3" 
                 Content="Find Prime" Command="{Binding CalculateNthPrimeCommand}"/>
+            <TextBox Margin="5" Padding="3"
+                 Text="{Binding MaxThreads, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 MouseDoubleClick="SelectAllText" GotMouseCapture="SelectAllText" GotKeyboardFocus="SelectAllText">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsProcessing}" Value="True" >
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </StackPanel>
+        
 
         <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Padding="3" Text="Result:"/>
         <TextBlock Grid.Row="1" Grid.Column="1" Margin="5" Padding="3" Text="{Binding NthPrimeResult, StringFormat='#,#.'}"/>

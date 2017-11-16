@@ -11,6 +11,7 @@ namespace PrimeFinder
     public class MainWindowViewModel : BindableBase
     {
         private uint _nthPrimeToFind;
+        private int _maxThreads;
         private bool _isProcessing;
         private ulong _nthPrimeResult;
         private TimeSpan _executionTime;
@@ -18,6 +19,7 @@ namespace PrimeFinder
         public MainWindowViewModel()
         {
             this._nthPrimeToFind = 10000;
+            this._maxThreads = 4;
             this.CalculateNthPrimeCommand = new DelegateCommand(this.CalculateNthPrime, this.CanCalculateNthPrime).ObservesProperty(() => this.IsProcessing);
         }
 
@@ -57,6 +59,12 @@ namespace PrimeFinder
             set => this.SetProperty(ref this._nthPrimeResult, value);
         }
 
+        public int MaxThreads
+        {
+            get => this._maxThreads;
+            set => this.SetProperty(ref this._maxThreads, value);
+        }
+
         private bool CanCalculateNthPrime()
         {
             return !this.IsProcessing;
@@ -67,7 +75,8 @@ namespace PrimeFinder
             this.IsProcessing = true;
 
             var sw = Stopwatch.StartNew();
-            this.NthPrimeResult = await Task.Run(() => Tools.FindNthPrime(this._nthPrimeToFind));
+
+            this.NthPrimeResult = await Task.Run(() => Tools.FindNthPrimeParallel(this._nthPrimeToFind, this._maxThreads));
             this.ExecutionTime = sw.Elapsed;
 
             this.IsProcessing = false;
