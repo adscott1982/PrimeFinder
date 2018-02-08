@@ -53,17 +53,6 @@ namespace PrimeMaths
 
         private static bool IsPrime(this ulong number)
         {
-            //if (n % 2 == 0) return false; // divisible by two?
-
-            //var maxDivisor = n / 2; 
-
-            //for (ulong i = 3; i <= maxDivisor; i++)
-            //{
-            //    if (n % i == 0) return false;
-            //}
-
-            //return true;
-
             if (number < 2) return false;
             if (number % 2 == 0) return (number == 2);
             ulong root = (ulong)Math.Sqrt(number);

@@ -19,7 +19,7 @@ namespace PrimeFinder
         public MainWindowViewModel()
         {
             this._nthPrimeToFind = 10000;
-            this._maxThreads = 4;
+            this._maxThreads = 120;
             this.CalculateNthPrimeCommand = new DelegateCommand(this.CalculateNthPrime, this.CanCalculateNthPrime).ObservesProperty(() => this.IsProcessing);
         }
 
